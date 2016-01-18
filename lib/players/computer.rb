@@ -1,6 +1,4 @@
-require_relative '../player.rb'
-
-class Player::Computer < Player
+  class Player::Computer < Player
 
 	# Should make move based on Min Max Algorithm, where it searches results
 	# Should make move where all possible end results from this move results in the highest score
@@ -32,12 +30,13 @@ class Player::Computer < Player
 
 	# Evaluates if the current player wins, loses or draws and sends back a score based on the result.
 	def score(board, depth)
-		if winner(board) == @token
-			return 10 - depth
-		elsif winner(board) == @opponent
-			return depth - 10
+		case winner(board)
+		when @token
+			10 - depth
+		when @opponent
+			depth - 10
 		else
-			return 0
+			0
 		end
 	end
 

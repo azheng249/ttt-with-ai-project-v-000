@@ -1,9 +1,4 @@
-require_relative 'board.rb'
-require_relative 'player.rb'
-require_relative 'players/human.rb'
-require_relative 'players/computer.rb'
-
-class Game
+  class Game
 	attr_accessor :board, :player_1, :player_2
 
 	WIN_COMBINATIONS = [
@@ -19,7 +14,7 @@ class Game
 	end
 
 	def current_player
-		@board.turn_count%2 == 0 ? @player_1 : @player_2
+		@board.turn_count.even? ? @player_1 : @player_2
 	end
 
 	def won?
@@ -37,8 +32,8 @@ class Game
 	end
 
 	def winner
-		if won?
-			return board.cells[won?[0]]
+		if won = won?
+			return board.cells[won.first]
 		end
 	end
 
